@@ -2,402 +2,93 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jhonn | Portfólio</title>
-  <meta name="description" content="Portfólio de Jhonn, desenvolvedor Back-End focado em Python, projetos com ESP32, animes e segurança digital." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Montserrat:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <style>
-    /* Reset e base */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    body {
-      background: linear-gradient(135deg, #0f1115 0%, #181c22 100%);
-      color: #e0e6f0;
-      line-height: 1.6;
-      padding: 2rem;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      position: relative;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-      position: relative;
-    }
-
-    header img {
-      max-width: 220px;
-      border-radius: 25px;
-      box-shadow:
-        0 0 15px #00f7ffbb,
-        0 0 30px #00f7ff88,
-        0 0 45px #00f7ff55;
-      animation: float 4s ease-in-out infinite;
-      transition: transform 0.3s ease;
-      cursor: pointer;
-      filter: drop-shadow(0 0 10px #00f7ffaa);
-    }
-
-    header img:hover {
-      transform: scale(1.05) rotate(2deg);
-      filter: drop-shadow(0 0 20px #00f7ffee);
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-15px);
-      }
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-top: 1.2rem;
-      font-weight: 900;
-      letter-spacing: 3px;
-      color: #00f7ff;
-      text-shadow:
-        0 0 8px #00f7ffcc,
-        0 0 12px #00c4ffcc;
-      user-select: none;
-    }
-
-    header p {
-      font-size: 1.15rem;
-      color: #a4dfffdd;
-      margin-top: 0.6rem;
-      font-weight: 500;
-      font-style: italic;
-      letter-spacing: 0.8px;
-    }
-
-    /* Nova seção apresentação */
-    #apresentacao {
-      max-width: 850px;
-      background: rgba(0, 247, 255, 0.12);
-      border: 1.5px solid #00f7ff77;
-      border-radius: 20px;
-      padding: 2.2rem 3rem;
-      margin-bottom: 2.8rem;
-      box-shadow:
-        0 0 40px #00f7ff66,
-        inset 0 0 30px #00f7ff44;
-      color: #d0f8ffdd;
-      font-size: 1.15rem;
-      line-height: 1.55;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      position: relative;
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-      cursor: default;
-    }
-
-    #apresentacao:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow:
-        0 0 60px #00f7ffbb,
-        inset 0 0 50px #00f7ff88;
-      background: rgba(0, 247, 255, 0.18);
-    }
-
-    #apresentacao::before {
-      content: '“';
-      font-size: 6rem;
-      position: absolute;
-      top: -30px;
-      left: 25px;
-      color: #00f7ff88;
-      font-weight: 900;
-      user-select: none;
-      pointer-events: none;
-      font-family: 'Montserrat', sans-serif;
-      text-shadow: 0 0 15px #00f7ffaa;
-    }
-
-    /* Seção dos blocos */
-    section {
-      max-width: 800px;
-      width: 100%;
-      background: rgba(25, 29, 37, 0.85);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 2.5rem 3rem;
-      margin-bottom: 2.5rem;
-      border-radius: 20px;
-      box-shadow:
-        0 0 20px #00f7ff44,
-        inset 0 0 40px #00f7ff22;
-      border: 1px solid #00f7ff55;
-      transition: box-shadow 0.3s ease, transform 0.6s ease, opacity 0.6s ease;
-      opacity: 1;
-    }
-
-    section.reveal {
-      opacity: 1;
-      transform: none;
-      transition-delay: 0.2s;
-    }
-
-    section:not(.reveal) {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-
-    section:hover {
-      box-shadow:
-        0 0 30px #00f7ffaa,
-        inset 0 0 60px #00f7ff55;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1.3rem;
-      color: #00f7ff;
-      text-shadow: 0 0 6px #00cfffbb;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      position: relative;
-      cursor: help;
-    }
-
-    /* Tooltip */
-    h2[data-tooltip]:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      bottom: 130%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #00f7ffdd;
-      color: #0f1115;
-      padding: 6px 12px;
-      border-radius: 8px;
-      white-space: nowrap;
-      font-size: 0.9rem;
-      font-weight: 700;
-      box-shadow: 0 0 8px #00f7ffaa;
-      pointer-events: none;
-      opacity: 1;
-      transition: opacity 0.3s ease;
-      z-index: 10;
-    }
-
-    h2[data-tooltip]::after {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    ul li {
-      margin-bottom: 1rem;
-      font-weight: 600;
-      font-size: 1.15rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #ff6f61;
-      font-style: italic;
-      padding: 0.8rem 0;
-      border-radius: 10px;
-      user-select: none;
-      position: relative;
-      overflow: hidden;
-      background: #33000033;
-      box-shadow: 0 0 8px #ff6f6166;
-      font-weight: 700;
-    }
-
-    p {
-      font-size: 1.1rem;
-      color: #bcd9f9cc;
-      margin-bottom: 0.6rem;
-      user-select: text;
-    }
-
-    a {
-      color: #00f7ff;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    a:hover {
-      text-decoration: underline;
-      color: #00cfff;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: auto;
-      padding: 1.5rem;
-      font-size: 0.9rem;
-      color: #777;
-      user-select: none;
-      letter-spacing: 0.7px;
-    }
-
-    /* Botão voltar ao topo */
-    #backToTopBtn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #00f7ff;
-      color: #0f1115;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 50px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 0 15px #00f7ffcc;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      user-select: none;
-      z-index: 9999;
-      font-family: 'Fira Code', monospace;
-      letter-spacing: 1.2px;
-      font-size: 1rem;
-      text-transform: uppercase;
-    }
-
-    #backToTopBtn.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* Responsividade */
-    @media (max-width: 700px) {
-      body {
-        padding: 1rem;
-      }
-
-      #apresentacao {
-        font-size: 1rem;
-        padding: 1.6rem 2rem;
-        margin-bottom: 2rem;
-      }
-
-      section {
-        padding: 1.5rem 2rem;
-        margin-bottom: 2rem;
-      }
-
-      h1 {
-        font-size: 2.5rem;
-      }
-
-      h2 {
-        font-size: 1.6rem;
-      }
-
-      ul li {
-        justify-content: center;
-      }
-
-      #backToTopBtn {
-        right: 15px;
-        bottom: 20px;
-        padding: 10px 14px;
-        font-size: 0.9rem;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jhonn | Desenvolvedor</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <img src="IMG-20201204-WA0003.jpg" alt="Jhonn programando" />
-    <h1>Jhonn</h1>
-    <p>Desenvolvedor Back-End | Python 3 | Apaixonado por tecnologia, animes e segurança digital</p>
-  </header>
+  <div class="container">
+    <header>
+      <h1 class="logo">JHONN<span class="blink">_</span></h1>
+      <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </header>
 
-  <section id="apresentacao">
-    <p>
-      Olá! Sou o <strong>JHONN</strong>, um desenvolvedor apaixonado por tecnologia e em constante evolução, focado na criação de soluções robustas nas áreas de desenvolvimento backend, web e segurança de aplicações.
-    </p>
-    <p>
-      Minha jornada na programação é impulsionada pela curiosidade e pelo desejo de construir sistemas eficientes, escaláveis e seguros. Utilizo minha expertise para transformar desafios complexos em código funcional, garantindo que as soluções não apenas atendam às necessidades, mas também estejam protegidas contra ameaças. Estou sempre buscando aprimorar minhas habilidades e explorar novas ferramentas para entregar o melhor resultado.
-    </p>
-    <p>
-      Explore meus projetos para ver como combino inovação, funcionalidade e segurança em cada linha de código.
-    </p>
-  </section>
+    <section class="hero">
+      <h2>Backend, Segurança & ESP32</h2>
+      <p>Construo sistemas modernos, rápidos e seguros.</p>
+      <a href="#projetos" class="btn">Ver projetos</a>
+    </section>
 
-  <section data-section="sobre" id="sobre">
-    <h2 data-tooltip="Quem sou eu">💼 Sobre Mim</h2>
-    <p>
-      Sou um desenvolvedor focado em Python, back-end e servidores. Sempre em busca de novos aprendizados, gosto de unir tecnologia com criatividade. Também curto animes e projetos com ESP32.
-    </p>
-  </section>
+    <section id="sobre">
+      <h3>💡 Sobre mim</h3>
+      <p>Sou desenvolvedor em evolução, com foco em Python, ESP32, servidores web e segurança digital. Curioso, autodidata e pronto para desafios reais.</p>
+    </section>
 
-  <section data-section="projetos" id="projetos">
-    <h2 data-tooltip="Meus principais projetos">🚀 Projetos</h2>
-    <ul>
-      <li>Em Construção</li>
-    </ul>
-  </section>
+    <section id="projetos">
+      <h3>🧪 Projetos</h3>
+      <div class="projetos-grid">
+        <div class="card">
+          <h4>Gerenciador de Senhas</h4>
+          <p>Aplicação local em Python com criptografia e autenticação por token.</p>
+        </div>
+        <div class="card">
+          <h4>Servidor ESP32 com SPIFFS</h4>
+          <p>Interface web moderna hospedada diretamente no ESP32.</p>
+        </div>
+        <div class="card">
+          <h4>Monitor WiFi com OLED</h4>
+          <p>Mostra status de rede e servidor em tempo real no display do ESP32.</p>
+        </div>
+      
+<div class="card">
+  <h4>Gerenciador de Senhas com Criptografia</h4>
+  <p>Aplicativo em Python com AES, senha mestre e autenticação por token.</p>
+</div>
+<div class="card">
+  <h4>API de Consulta CEP/IP/Clima</h4>
+  <p>Backend em Flask com respostas em JSON e autenticação via token.</p>
+</div>
+<div class="card">
+  <h4>Servidor Web com Tela OLED</h4>
+  <p>ESP32 com SPIFFS, monitor WiFi e display integrado ao servidor local.</p>
+</div>
+<div class="card">
+  <h4>Estação Meteorológica WiFi</h4>
+  <p>Sensor DHT22 no ESP32 com interface web para temperatura e umidade.</p>
+</div>
+<div class="card">
+  <h4>Monitor de Bateria com Gráfico</h4>
+  <p>Leitura de tensão da bateria com ADC e dashboard em tempo real.</p>
+</div>
+<div class="card">
+  <h4>Reconhecimento Facial com ESP32-CAM</h4>
+  <p>Identificação de rostos conhecidos com ESP32-CAM ou OpenCV.</p>
+</div>
+<div class="card">
+  <h4>Painel de Upload no ESP32</h4>
+  <p>Permite enviar e baixar arquivos pela web com autenticação.</p>
+</div>
+<div class="card">
+  <h4>Mini Linktree no ESP32</h4>
+  <p>Bio pessoal acessível por link com design moderno e leve.</p>
+</div>
 
-  <section data-section="contato" id="contato">
-    <h2 data-tooltip="Me contate">📞 Contato</h2>
-    <p>Email: <a href="mailto:jhonn.dev@email.com">cafeeccodigo@gmail.com</a></p>
-    <p>Instagram: <a href="https://www.instagram.com/jhonn_junn/" target="_blank" rel="noopener">@JhonnJunn</a></p>
-    <p>GitHub: <a href="https://github.com/seuusuario" target="_blank" rel="noopener">github.com/Jhonnjunio</a></p>
-  </section>
+    </div>
+    </section>
 
-  <footer>
-    <p>© 2025 Jhonn Dev</p>
-  </footer>
+    <section id="contato">
+      <h3>📬 Contato</h3>
+      <p>Me chame no <a href="https://www.instagram.com/jhonn_junn/" target="_blank">@Jhonn_junn</a> </a></p>
+    </section>
 
-  <button id="backToTopBtn" aria-label="Voltar ao topo">Topo ↑</button>
-
-  <script>
-    // Mostrar botão voltar ao topo quando scroll passar de 300px
-    const backToTopBtn = document.getElementById('backToTopBtn');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTopBtn.classList.add('show');
-      } else {
-        backToTopBtn.classList.remove('show');
-      }
-    });
-
-    // Ao clicar, rola suavemente ao topo
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Animação reveal simples para as seções
-    const sections = document.querySelectorAll('section');
-    const revealOnScroll = () => {
-      const windowHeight = window.innerHeight;
-      sections.forEach(section => {
-        const top = section.getBoundingClientRect().top;
-        if (top < windowHeight - 100) {
-          section.classList.add('reveal');
-        }
-      });
-    };
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
-  </script>
+    <footer>
+      <p>&copy; 2025 JHONN. Todos os direitos reservados.</p>
+    </footer>
+  </div>
 </body>
 </html>
